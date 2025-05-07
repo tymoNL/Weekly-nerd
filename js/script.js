@@ -1,12 +1,12 @@
 const files = [
-    { filename: "/pages/weekly_nerd-1.html?id=1", name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "/images/killian_valkhof.jpg" },
-    { filename: "/pages/weekly_nerd-2.html?id=2", name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "/images/ppt.jpg" },
-    { filename: "/pages/weekly_nerd-3.html?id=3", name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "/images/cassie_evans.png" },
-    { filename: "/pages/weekly_nerd-4.html?id=4", name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "/images/jeremy_keith.jpg" },
-    { filename: "/pages/weekly_nerd-5.html?id=5", name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
-    { filename: "/pages/weekly_nerd-6.html?id=6", name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/images/niels-leenheer.jpg" },
-    { filename: "/pages/weekly_nerd-7.html?id=7", name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/erik-kroes.jpg" },
-    { filename: "/pages/weekly_nerd-8.html?id=8", name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" }
+    { filename: "../pages/weekly_nerd-1.html?id=1", name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "../images/killian_valkhof.jpg" },
+    { filename: "../pages/weekly_nerd-2.html?id=2", name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "../images/ppt.jpg" },
+    { filename: "../pages/weekly_nerd-3.html?id=3", name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "../images/cassie_evans.png" },
+    { filename: "../pages/weekly_nerd-4.html?id=4", name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "../images/jeremy_keith.jpg" },
+    { filename: "../pages/weekly_nerd-5.html?id=5", name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
+    { filename: "../pages/weekly_nerd-6.html?id=6", name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "../images/niels-leenheer.jpg" },
+    { filename: "../pages/weekly_nerd-7.html?id=7", name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "../images/erik-kroes.jpg" },
+    { filename: "../pages/weekly_nerd-8.html?id=8", name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "../images/nienke_de_keijzer.jpg" }
 ];
 
 
