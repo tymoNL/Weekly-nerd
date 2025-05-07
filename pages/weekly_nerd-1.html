@@ -39,15 +39,59 @@
                     krachtige taal.
                 </p>
 
+                <h4>HSL</h4>
                 <p>
+                    HSL staat voor Hue, Saturation, en Lightness. Het is een manier om kleuren te definiëren in CSS.
 
-                </p>
+                <ul>
+                    <li><b>Hue (Tint):</b><br /> De tint van de kleur, gemeten in graden op een kleurencirkel (0-360).
+                        Bijvoorbeeld:
+                        <ul>
+                            <li>0° is rood</li>
+                            <li>120° is groen</li>
+                            <li>240° is blauw</li>
+                        </ul>
+                    </li>
+                    <li><b>Saturation (Verzadiging):</b><br /> Hoe intens of levendig de kleur is, uitgedrukt in een
+                        percentage (0% is grijs, 100% is volledig verzadigd).</li>
+
+                    <li><b>Lightness (Helderheid):</b><br /> Dit bepaalt hoe licht of donker een kleur is, uitgedrukt in een
+                        percentage.
+                        <ul>
+                            <li>0% is volledig zwart.</li>
+                            <li>50% is normaal (standaard helderheid).</li>
+                            <li>100% is volledig wit.</li>
+                        </ul>
+                    </li>
+                    </p>
+
+                    <h4>:has() selector</h4>
+                    <p>
+                        De :has() CSS Selector kan je gebruiken om een element te selecteren dat een specifiek
+                        kindelement bevat. Het is een krachtige pseudo-klasse die conditionele styling mogelijk maakt.
+                    </p>
+
+                    <p>
+                        Bijvoorbeeld:<br />
+                        <code>
+                            div:has(> img) {
+                                border: 2px solid green;
+                            }
+                            </code>
+                    </p>
+                    <p>
+                        <b>Uitleg:</b><br /> Dit selecteert alle <code>&lt;div&gt;</code>-elementen die direct een
+                        <code>&lt;img&gt;</code>-element bevatten en geeft ze een groene rand.</li>
+                    </p>
             </div>
         </section>
     </main>
 
     <footer>
-
+        <p>
+            <i class="fa-regular fa-copyright"></i>
+            2025 <a href="https://github.com/tymoNL">Tymo Smids</a> Alle rechten voorbehouden
+        </p>
     </footer>
 </body>
 
