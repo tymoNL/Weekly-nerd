@@ -8,6 +8,7 @@ const files = [
     { filename: "/pages/weekly_nerd-7.html?id=7", name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" }
 ];
 
+
 // Get the container element
 const container = document.querySelector('.cardGrid');
 const details = document.querySelector('.details');
@@ -15,10 +16,11 @@ const details = document.querySelector('.details');
 // Loop through the files and create cards dynamically
 if (container) {
     files.forEach((file, index) => {
+        const sanitizedName = file.name.replace(/\s+/g, '-'); // Clean name for view-transition
         const card = `
             <article class="card">
                 <a href="${file.filename}">
-                    <img src="${file.image}" alt="${file.name}" />
+                    <img src="${file.image}" id="${sanitizedName}" alt="${file.name}" style="view-transition-name: ${sanitizedName};" />
                 </a>
                 <h4>${file.name}</h4>
                 <p>
@@ -29,9 +31,10 @@ if (container) {
                 </p>
             </article>
         `;
-
+    
         container.insertAdjacentHTML('beforeend', card);
     });
+    
 }
 
 if (details) {
@@ -42,6 +45,8 @@ if (details) {
     const selectedPerson = files.find((file, index) => file.filename.includes(`weekly_nerd-${selectedPersonId}.html`));
 
     if (selectedPerson) {
+        const sanitizedName = selectedPerson.name.replace(/\s+/g, '-'); // Replace spaces with hyphens
+
         const detailsHeader = `
             <div class="detailHeader">
                 <h2>Weekly nerd #${selectedPersonId}</h2>
@@ -60,7 +65,7 @@ if (details) {
 
         const detailsImage = `
             <div class="detailsImage">
-                <img src="${selectedPerson.image}" alt="${selectedPerson.name}" />
+                <img id="${sanitizedName}" src="${selectedPerson.image}" alt="${selectedPerson.name}" style="view-transition-name: ${sanitizedName};" />
             </div>
         `;
 
@@ -68,3 +73,21 @@ if (details) {
         details.insertAdjacentHTML('afterBegin', detailsHeader);
     }
 }
+
+
+document.querySelectorAll('.card_image').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+  
+      const movieId = card.getAttribute('id');
+      const targetUrl = `/movies/${movieId}`; // adjust depending on your site
+  
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          window.location.href = targetUrl;
+        });
+      } else {
+        window.location.href = targetUrl;
+      }
+    });
+  });

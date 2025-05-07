@@ -5,6 +5,7 @@
     --link-color: #FF6542;
     --font-color: #272727;
     --background-color: #FDF7FA;
+    --header-background-color: #222E50;
 
     --border-radius: 5px;
     --font-family: "Quicksand", sans-serif;
@@ -19,6 +20,7 @@ body {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
 
+    gap: 1rem;
     background-color: var(--background-color);
     color: var(--font-color);
     font-family: var(--font-family);
@@ -27,6 +29,8 @@ body {
 }
 
 header {
+    background-color: var(--header-background-color);
+    color: var(--background-color);
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: 1fr;
@@ -37,7 +41,7 @@ header {
         align-items: center;
 
         h1 a, h2 a {
-            color: var(--font-color);
+            color: var(--background-color);
             text-decoration: none;
         }
     }
@@ -81,6 +85,7 @@ a:not([role="button"]) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
+    margin-bottom: 2rem;
 
     .card {
         display: grid;
@@ -132,3 +137,29 @@ a:not([role="button"]) {
         }
     }
 }
+
+:root {
+    view-transition-name: root;
+  }
+  
+  @view-transition {
+    navigation: auto;
+  }
+  
+  html::view-transition {
+    animation-duration: 0.4s;
+  }
+  
+  ::view-transition-old(movie_*) {
+    opacity: 1;
+  }
+  
+  ::view-transition-new(movie_*) {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
