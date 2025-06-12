@@ -17,7 +17,7 @@ const files = [
     const speakerNumber = index + 1;
     return {
         ...file,
-        filename: `/pages/weekly_nerd-${speakerNumber}.html?id=${speakerNumber}`
+        filename: `pages/weekly_nerd-${speakerNumber}.html?id=${speakerNumber}`
     };
 });
 
@@ -58,7 +58,7 @@ if (details) {
 
     if (selectedPerson) {
         if (!selectedPerson.image) {
-            selectedPerson.image = 'images/no-image.png';
+            selectedPerson.image = '../images/no-image.png';
         }
         const sanitizedName = selectedPerson.name.replace(/\s+/g, '-');
 
@@ -78,7 +78,7 @@ if (details) {
 
         const detailsImage = `
             <div class="detailsImage">
-                <img id="${sanitizedName}" src="${selectedPerson.image}" alt="${selectedPerson.name}" style="view-transition-name: ${sanitizedName};" />
+                <img id="${sanitizedName}" src="../${selectedPerson.image}" alt="${selectedPerson.name}" style="view-transition-name: ${sanitizedName};" />
             </div>
         `;
 
