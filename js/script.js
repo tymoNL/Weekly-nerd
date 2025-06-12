@@ -4,14 +4,15 @@ const files = [
     { name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "/images/cassie_evans.png" },
     { name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "/images/jeremy_keith.jpg" },
     { name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
-    { name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/images/niels-leenheer.jpg" },
-    { name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/erik-kroes.jpg" },
+    { name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/images/niels_leenheer.jpg" },
+    { name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/erik_kroes.jpg" },
     { name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Marieke", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Dave Bitter", date: "2025-05-28", location: "IO digital", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Steve Jonk", date: "2025-05-28", location: "IO digital", time: "16:20 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Clarce Verdel", date: "2025-05-28", location: "IO digital", time: "16:40 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Miriam Suzanne", date: "2025-05-28", location: "IO digital", time: "16:40 uur", image: "/images/nienke_de_keijzer.jpg" }
+    { name: "Dave Bitter", date: "2025-05-14", location: "IO digital", time: "16:00 uur", image: "/images/dave_bitter.jpeg" },
+    { name: "Steve Jonk", date: "2025-05-14", location: "IO digital", time: "16:20 uur", image: "/images/steve_jonk.jpeg" },
+    { name: "Clarce Verdel", date: "2025-05-14", location: "IO digital", time: "16:40 uur" },
+    { name: "geen idee", date: "2025-05-21", location: "Q42", time: "16:00 uur" },
+    { name: "Marieke de Hoop", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur" },
+    { name: "Miriam Suzanne", date: "2025-06-04", location: "IO digital", time: "16:40 uur", image: "/images/miriam_suzanne.jpeg" }
 ].map((file, index) => {
     const speakerNumber = index + 1;
     return {
