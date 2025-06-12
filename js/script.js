@@ -1,18 +1,18 @@
 const files = [
-    { name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "/images/killian_valkhof.jpg" },
-    { name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "/images/ppt.jpg" },
-    { name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "/images/cassie_evans.png" },
-    { name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "/images/jeremy_keith.jpg" },
+    { name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "../images/killian_valkhof.jpg" },
+    { name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "../images/ppt.jpg" },
+    { name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "../images/cassie_evans.png" },
+    { name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "../images/jeremy_keith.jpg" },
     { name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
-    { name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/images/niels_leenheer.jpg" },
-    { name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/erik_kroes.jpg" },
-    { name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
-    { name: "Dave Bitter", date: "2025-05-14", location: "IO digital", time: "16:00 uur", image: "/images/dave_bitter.jpeg" },
-    { name: "Steve Jonk", date: "2025-05-14", location: "IO digital", time: "16:20 uur", image: "/images/steve_jonk.jpeg" },
+    { name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "../images/niels_leenheer.jpg" },
+    { name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "../images/erik_kroes.jpg" },
+    { name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "../images/nienke_de_keijzer.jpg" },
+    { name: "Dave Bitter", date: "2025-05-14", location: "IO digital", time: "16:00 uur", image: "../images/dave_bitter.jpeg" },
+    { name: "Steve Jonk", date: "2025-05-14", location: "IO digital", time: "16:20 uur", image: "../images/steve_jonk.jpeg" },
     { name: "Clarce Verdel", date: "2025-05-14", location: "IO digital", time: "16:40 uur" },
     { name: "geen idee", date: "2025-05-21", location: "Q42", time: "16:00 uur" },
     { name: "Marieke de Hoop", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur" },
-    { name: "Miriam Suzanne", date: "2025-06-04", location: "IO digital", time: "16:40 uur", image: "/images/miriam_suzanne.jpeg" }
+    { name: "Miriam Suzanne", date: "2025-06-04", location: "IO digital", time: "16:40 uur", image: "../images/miriam_suzanne.jpeg" }
 ].map((file, index) => {
     const speakerNumber = index + 1;
     return {
@@ -27,7 +27,7 @@ const details = document.querySelector('.details');
 // Loop through the files and create cards dynamically
 if (container) {
     files.forEach((file, index) => {
-        if (!file.image) { file.image = '/images/no-image.png'; }
+        if (!file.image) { file.image = '../images/no-image.png'; }
 
         const sanitizedName = file.name.replace(/\s+/g, '-');
         const card = `
@@ -58,7 +58,7 @@ if (details) {
 
     if (selectedPerson) {
         if (!selectedPerson.image) {
-            selectedPerson.image = '/images/no-image.png';
+            selectedPerson.image = '../images/no-image.png';
         }
         const sanitizedName = selectedPerson.name.replace(/\s+/g, '-');
 
