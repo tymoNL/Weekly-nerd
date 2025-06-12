@@ -1,25 +1,34 @@
 const files = [
-    { filename: "/Weekly-nerd/pages/weekly_nerd-1.html?id=1", name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "/Weekly-nerd/images/killian_valkhof.jpg" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-2.html?id=2", name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "/Weekly-nerd/images/ppt.jpg" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-3.html?id=3", name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "/Weekly-nerd/images/cassie_evans.png" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-4.html?id=4", name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "/Weekly-nerd/images/jeremy_keith.jpg" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-5.html?id=5", name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-6.html?id=6", name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/Weekly-nerd/images/niels-leenheer.jpg" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-7.html?id=7", name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/Weekly-nerd/images/erik-kroes.jpg" },
-    { filename: "/Weekly-nerd/pages/weekly_nerd-8.html?id=8", name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/Weekly-nerd/images/nienke_de_keijzer.jpg" }
-];
+    { name: "Kilian Valkhof", date: "2025-02-05", location: "WBH01B17", time: "16:00 uur", image: "/images/killian_valkhof.jpg" },
+    { name: "Peter Paul Koch", date: "2025-02-12", location: "WBH01B17", time: "16:00 uur", image: "/images/ppt.jpg" },
+    { name: "Cassie Evans", date: "2025-03-07", location: "BPH00B02", time: "13:00 uur", image: "/images/cassie_evans.png" },
+    { name: "Jeremy Keith", date: "2025-03-12", location: "WBH01B17", time: "16:00 uur", image: "/images/jeremy_keith.jpg" },
+    { name: "Rosa", date: "2025-04-04", location: "WBH01B17", time: "16:00 uur" },
+    { name: "Niels leenheer", date: "2025-04-09", location: "WBH01B17", time: "16:00 uur", image: "/images/niels-leenheer.jpg" },
+    { name: "Erik kroes", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/erik-kroes.jpg" },
+    { name: "Nienke de Keijzer", date: "2025-04-16", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
+    { name: "Marieke", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
+    { name: "Dave Bitter", date: "2025-05-28", location: "IO digital", time: "16:00 uur", image: "/images/nienke_de_keijzer.jpg" },
+    { name: "Steve Jonk", date: "2025-05-28", location: "IO digital", time: "16:20 uur", image: "/images/nienke_de_keijzer.jpg" },
+    { name: "Clarce Verdel", date: "2025-05-28", location: "IO digital", time: "16:40 uur", image: "/images/nienke_de_keijzer.jpg" },
+    { name: "Miriam Suzanne", date: "2025-05-28", location: "IO digital", time: "16:40 uur", image: "/images/nienke_de_keijzer.jpg" }
+].map((file, index) => {
+    const speakerNumber = index + 1;
+    return {
+        ...file,
+        filename: `/pages/weekly_nerd-${speakerNumber}.html?id=${speakerNumber}`
+    };
+});
 
-
-// Get the container element
 const container = document.querySelector('.cardGrid');
 const details = document.querySelector('.details');
 
 // Loop through the files and create cards dynamically
 if (container) {
     files.forEach((file, index) => {
-        if (!file.image) { file.image = '/Weekly-nerd/images/no-image.png'; }
+        if (!file.image) { file.image = '/images/no-image.png'; }
 
-        const sanitizedName = file.name.replace(/\s+/g, '-'); // Clean name for view-transition
+        const sanitizedName = file.name.replace(/\s+/g, '-');
         const card = `
             <article class="card">
                 <a href="${file.filename}">
@@ -41,17 +50,16 @@ if (container) {
 }
 
 if (details) {
-    // Check the URL for a specific "id" query parameter to match the selected person
     const urlParams = new URLSearchParams(window.location.search);
-    const selectedPersonId = urlParams.get('id'); // e.g., ?id=1 for the first person
+    const selectedPersonId = urlParams.get('id');
 
     const selectedPerson = files.find((file, index) => file.filename.includes(`weekly_nerd-${selectedPersonId}.html`));
 
     if (selectedPerson) {
         if (!selectedPerson.image) {
-            selectedPerson.image = '/Weekly-nerd/images/no-image.png';
+            selectedPerson.image = '/images/no-image.png';
         }
-        const sanitizedName = selectedPerson.name.replace(/\s+/g, '-'); // Replace spaces with hyphens
+        const sanitizedName = selectedPerson.name.replace(/\s+/g, '-');
 
         const detailsHeader = `
             <div class="detailHeader">
@@ -66,8 +74,6 @@ if (details) {
                 </p>
             </div>
         `;
-
-
 
         const detailsImage = `
             <div class="detailsImage">
@@ -85,15 +91,35 @@ document.querySelectorAll('.card_image').forEach(card => {
     card.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const movieId = card.getAttribute('id');
-        const targetUrl = `/movies/${movieId}`; // adjust depending on your site
+        const speakerID = card.getAttribute('id');
+        const targetUrl = `/speaker/${speakerID}`; // adjust depending on your site
 
         if (document.startViewTransition) {
             document.startViewTransition(() => {
                 window.location.href = targetUrl;
             });
-        } else {
-            window.location.href = targetUrl;
-        }
+        } else { window.location.href = targetUrl; }
     });
 });
+
+const colorSwitch = document.querySelector('#colorSwitch');
+
+if (colorSwitch) {
+    document.querySelector('#colorSwitch').addEventListener('click', () => {
+        const body = document.querySelector('body');
+        const colorSwitchIcon = document.querySelector('#colorSwitch i');
+
+        body.classList.toggle('dark');
+        body.classList.toggle('light');
+
+        colorSwitchIcon.classList.toggle('fa-sun');
+        colorSwitchIcon.classList.toggle('fa-moon');
+
+        // Save the current mode in localStorage
+        if (body.classList.contains('dark')) {
+            localStorage.setItem('mode', 'dark');
+        } else {
+            localStorage.setItem('mode', 'light');
+        }
+    });
+}
