@@ -104,23 +104,33 @@ document.querySelectorAll('.card_image').forEach(card => {
 });
 
 const colorSwitch = document.querySelector('#colorSwitch');
+const body = document.querySelector('body');
+const colorSwitchIcon = document.querySelector('#colorSwitch i');
 
+// Load mode from localStorage
+const savedMode = localStorage.getItem('mode');
+if (savedMode === 'dark') {
+    body.classList.add('dark');
+    body.classList.remove('light');
+    colorSwitchIcon?.classList.add('fa-moon');
+    colorSwitchIcon?.classList.remove('fa-sun');
+} else {
+    body.classList.add('light');
+    body.classList.remove('dark');
+    colorSwitchIcon?.classList.add('fa-sun');
+    colorSwitchIcon?.classList.remove('fa-moon');
+}
+
+// Handle toggle
 if (colorSwitch) {
-    document.querySelector('#colorSwitch').addEventListener('click', () => {
-        const body = document.querySelector('body');
-        const colorSwitchIcon = document.querySelector('#colorSwitch i');
-
+    colorSwitch.addEventListener('click', () => {
         body.classList.toggle('dark');
         body.classList.toggle('light');
 
-        colorSwitchIcon.classList.toggle('fa-sun');
-        colorSwitchIcon.classList.toggle('fa-moon');
+        colorSwitchIcon?.classList.toggle('fa-sun');
+        colorSwitchIcon?.classList.toggle('fa-moon');
 
-        // Save the current mode in localStorage
-        if (body.classList.contains('dark')) {
-            localStorage.setItem('mode', 'dark');
-        } else {
-            localStorage.setItem('mode', 'light');
-        }
+        const mode = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('mode', mode);
     });
 }
