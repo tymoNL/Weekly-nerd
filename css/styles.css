@@ -1,16 +1,15 @@
 :root {
-    color-scheme: light dark;
-
     --container-width: 1440px;
-
     --button-background: oklch(0.5496 0.1611 141.19);
     --link-color: oklch(0.5527 0.1729 24.81);
     --font-color: light-dark(oklch(0.2727 0 0), oklch(0.9598 0.0065 17.27));
     --background-color: light-dark(oklch(0.9598 0.0065 17.27), oklch(0.2727 0 0));
     --header-background-color: var(--font-color);
-
     --border-radius: 5px;
     --font-family: "Quicksand", sans-serif;
+
+    color-scheme: light dark;
+    scroll-behavior: smooth;
 }
 
 *,
