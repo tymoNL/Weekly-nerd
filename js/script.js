@@ -10,9 +10,7 @@ const files = [
     { name: "Dave Bitter", date: "2025-05-14", location: "IO digital", time: "16:00 uur", image: "images/dave_bitter.jpeg" },
     { name: "Steve Jonk", date: "2025-05-14", location: "IO digital", time: "16:20 uur", image: "images/steve_jonk.jpeg" },
     { name: "Clarce Verdel", date: "2025-05-14", location: "IO digital", time: "16:40 uur" },
-    { name: "geen idee", date: "2025-05-21", location: "Q42", time: "16:00 uur" },
-    { name: "Marieke de Hoop", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur" },
-    { name: "Miriam Suzanne", date: "2025-06-04", location: "IO digital", time: "16:40 uur", image: "images/miriam_suzanne.jpeg" }
+    { name: "Marieke de Hoop", date: "2025-05-28", location: "KSH00A11", time: "16:00 uur" }
 ].map((file, index) => {
     const speakerNumber = index + 1;
     return {
@@ -31,18 +29,15 @@ if (container) {
 
         const sanitizedName = file.name.replace(/\s+/g, '-');
         const card = `
-            <article class="card">
-                <a href="${file.filename}">
+            <a href="${file.filename}" class="card">
                     <img src="${file.image}" id="${sanitizedName}" alt="${file.name}" style="view-transition-name: ${sanitizedName};" />
-                </a>
                 <h4>${file.name}</h4>
                 <p>
                     <i class="fa-solid fa-clock"></i>&#160;<i>${file.time ? file.time : "Tijd onbekend"}</i><br />
                     <i class="fa-solid fa-location-dot"></i>&#160;<small>${file.location ? file.location : ""}</small><br />
                     <small>${file.date}</small><br />
-                    <a href="${file.filename}">Meer info</a>
                 </p>
-            </article>
+            </a>
         `;
 
         container.insertAdjacentHTML('beforeend', card);
@@ -52,7 +47,7 @@ if (container) {
 
 if (details) {
     const urlParams = new URLSearchParams(window.location.search);
-    const selectedPersonId = urlParams.get('id');
+    const selectedPersonId = Number(urlParams.get('id'));
 
     const selectedPerson = files.find((file, index) => file.filename.includes(`weekly_nerd-${selectedPersonId}.html`));
 
@@ -63,7 +58,6 @@ if (details) {
         const sanitizedName = selectedPerson.name.replace(/\s+/g, '-');
 
         const detailsHeader = `
-            <div class="detailHeader">
                 <h2>Weekly nerd #${selectedPersonId}</h2>
                 <p>
                     <b>${selectedPerson.name}</b><br />
@@ -73,17 +67,36 @@ if (details) {
                     <small><i class="fa-solid fa-clock"></i>&#160;${selectedPerson.time}</small><br /> 
                     <small><i class="fa-solid fa-location-dot"></i>&#160;${selectedPerson.location}</small>
                 </p>
-            </div>
         `;
 
         const detailsImage = `
-            <div class="detailsImage">
                 <img id="${sanitizedName}" src="../${selectedPerson.image}" alt="${selectedPerson.name}" style="view-transition-name: ${sanitizedName};" />
-            </div>
         `;
 
-        details.insertAdjacentHTML('afterBegin', detailsImage);
-        details.insertAdjacentHTML('afterBegin', detailsHeader);
+        const breadcrumbs = `
+            <a href="/index.html">Home</a> &gt; 
+            <span>Weekly Nerd #${selectedPersonId}</span>
+        `;
+
+        const nextPreviousPerson = `
+                <a href="${selectedPersonId > 1
+                    ? `weekly_nerd-${selectedPersonId - 1}.html?id=${selectedPersonId - 1}`
+                    : `weekly_nerd-${files.length}.html?id=${files.length}`
+                    }" class="previous">
+                    <i class="fa-solid fa-arrow-left"></i> Vorige
+                </a>
+                <a href="${selectedPersonId < files.length
+                    ? `weekly_nerd-${selectedPersonId + 1}.html?id=${selectedPersonId + 1}`
+                    : `weekly_nerd-1.html?id=1`
+                    }" class="next">
+                    Volgende <i class="fa-solid fa-arrow-right"></i>
+                </a>
+        `;
+
+        details.querySelector('.detailHeader').insertAdjacentHTML('afterBegin', detailsHeader);
+        details.querySelector('.detailsImage').insertAdjacentHTML('afterBegin', detailsImage);
+        details.querySelector('.breadcrumbs').insertAdjacentHTML('afterBegin', breadcrumbs);
+        details.querySelector('.nextPrevious').insertAdjacentHTML('afterBegin', nextPreviousPerson);
     }
 }
 
