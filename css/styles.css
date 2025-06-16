@@ -63,14 +63,16 @@ header {
         }
 
         h1 a,
-        h2 a {
+        h2 a,
+        a {
             color: var(--background-color);
             text-decoration: none;
             transition: color 0.3s ease-out;
         }
 
-        a:hover {
+        a:hover, a:focus {
             color: var(--link-color);
+            outline: none;
         }
     }
 }
@@ -122,17 +124,24 @@ a:not([role="button"]) {
 }
 
 details {
+    outline: 1px solid transparent;
+
     summary {
         cursor: pointer;
         transition: all 0.3s ease-out;
 
-        &:hover {
+        &:hover, &:focus {
             color: var(--link-color);
+            outline: none;
         }
 
         h2 {
             display: inline-block;
         }
+    }
+
+    &:has(summary:focus) {
+        outline-color: var(--link-color);
     }
 }
 
@@ -154,7 +163,9 @@ details {
         text-decoration: none;
         transition: transform 0.3s ease;
 
-        &:hover, &:target, &:focus {
+        &:hover,
+        &:target,
+        &:focus {
             outline-color: var(--link-color);
 
             img {
