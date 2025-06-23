@@ -42,7 +42,6 @@ if (container) {
 
         container.insertAdjacentHTML('beforeend', card);
     });
-
 }
 
 if (details) {
@@ -80,15 +79,15 @@ if (details) {
 
         const nextPreviousPerson = `
                 <a href="${selectedPersonId > 1
-                    ? `weekly_nerd-${selectedPersonId - 1}.html?id=${selectedPersonId - 1}`
-                    : `weekly_nerd-${files.length}.html?id=${files.length}`
-                    }" class="previous">
+                ? `weekly_nerd-${selectedPersonId - 1}.html?id=${selectedPersonId - 1}`
+                : `weekly_nerd-${files.length}.html?id=${files.length}`
+            }" class="previous">
                     <i class="fa-solid fa-arrow-left"></i> Vorige
                 </a>
                 <a href="${selectedPersonId < files.length
-                    ? `weekly_nerd-${selectedPersonId + 1}.html?id=${selectedPersonId + 1}`
-                    : `weekly_nerd-1.html?id=1`
-                    }" class="next">
+                ? `weekly_nerd-${selectedPersonId + 1}.html?id=${selectedPersonId + 1}`
+                : `weekly_nerd-1.html?id=1`
+            }" class="next">
                     Volgende <i class="fa-solid fa-arrow-right"></i>
                 </a>
         `;
@@ -99,22 +98,6 @@ if (details) {
         details.querySelector('.nextPrevious').insertAdjacentHTML('afterBegin', nextPreviousPerson);
     }
 }
-
-
-document.querySelectorAll('.card_image').forEach(card => {
-    card.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const speakerID = card.getAttribute('id');
-        const targetUrl = `/speaker/${speakerID}`; // adjust depending on your site
-
-        if (document.startViewTransition) {
-            document.startViewTransition(() => {
-                window.location.href = targetUrl;
-            });
-        } else { window.location.href = targetUrl; }
-    });
-});
 
 const colorSwitch = document.querySelector('#colorSwitch');
 const body = document.querySelector('body');
@@ -147,3 +130,62 @@ if (colorSwitch) {
         localStorage.setItem('mode', mode);
     });
 }
+
+// Toggle animations
+const toggleButton = document.getElementById('toggleAnimationsBtn');
+const animationStatus = document.querySelector('#animationStatus');
+
+// Determine animation setting
+let savedAnimations = localStorage.getItem('animationsEnabled');
+
+// ✅ If no saved setting, check for prefers-reduced-motion
+if (savedAnimations === null) {
+    animationsEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+} else {
+    animationsEnabled = savedAnimations === 'true';
+}
+
+// ✅ Apply the correct class to body
+body.classList.toggle('noAnimations', !animationsEnabled);
+
+// ✅ Set status and icon on load
+updateAnimationStatus();
+updateToggleIcon();
+
+// ✅ Toggle on click
+toggleButton.addEventListener('click', () => {
+    animationsEnabled = !animationsEnabled;
+    body.classList.toggle('noAnimations', !animationsEnabled); // Correct class
+    localStorage.setItem('animationsEnabled', animationsEnabled);
+
+    updateAnimationStatus();
+    updateToggleIcon();
+    showAnimationsInfo();
+});
+
+// ✅ Update status label
+function updateAnimationStatus() {
+    if (animationStatus) {
+        animationStatus.textContent = animationsEnabled ? 'Enabled' : 'Disabled';
+    }
+}
+
+// ✅ Update icon
+function updateToggleIcon() {
+    toggleButton.innerHTML = animationsEnabled
+        ? '<i class="fa-solid fa-head-side-cough"></i>'
+        : '<i class="fa-solid fa-head-side-cough-slash"></i>';
+}
+
+const animationsInfo = document.querySelector('.animationsInfo');
+
+function showAnimationsInfo() {
+    animationsInfo.style.display = 'block';
+
+    if (animationsInfo) {
+        setTimeout(() => {
+            animationsInfo.style.display = 'none';
+        }, 2000); // 2000 ms = 2 seconds
+    }
+}
+
